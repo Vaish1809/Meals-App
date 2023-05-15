@@ -4,8 +4,10 @@ import 'package:meals_app/widgets/meal_item_trait.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class MealItem extends StatelessWidget {
-  const MealItem({super.key, required this.meal});
+MealItem({super.key, required this.meal,required this.onSelectMeal});
   final Meal meal;
+
+  void Function(Meal meal) onSelectMeal;
 //how to make the first letter of a word capital adn the rest lower case 
   String get complexityText{
     return meal.complexity.name[0].toUpperCase() + meal.complexity.name.substring(1);
@@ -25,7 +27,9 @@ class MealItem extends StatelessWidget {
           .hardEdge, //this is necessary because stack ignores the shapse so we wantt o force shape on it
       elevation: 2, //to have it come 3d to eelevate it
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          onSelectMeal(meal);
+        },
         child: Stack(
           children: [
             //bottommost or bg first
