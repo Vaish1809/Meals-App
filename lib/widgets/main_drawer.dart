@@ -1,15 +1,15 @@
-
 import 'package:flutter/material.dart';
 
 class MainDrawer extends StatelessWidget {
-  const MainDrawer({super.key,required this.onSelectScreen});
-final void Function(String identifier) onSelectScreen;
+  const MainDrawer({super.key, required this.onSelectScreen});
+  final void Function(String identifier) onSelectScreen;
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: Column(
         children: [
-          DrawerHeader(//just like appbar on screen
+          DrawerHeader(
+            //just like appbar on screen
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -41,8 +41,8 @@ final void Function(String identifier) onSelectScreen;
               ],
             ),
           ),
-          ListTile(//when we want to output a list 
-            leading: Icon(//icons alonh with text 
+          ListTile(
+            leading: Icon(
               Icons.restaurant,
               size: 26,
               color: Theme.of(context).colorScheme.onBackground,

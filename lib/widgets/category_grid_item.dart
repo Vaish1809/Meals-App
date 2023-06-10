@@ -12,9 +12,7 @@ class CategoryGridItem extends StatelessWidget {
   final void Function() onSelectCategory;
   @override
   Widget build(BuildContext context) {
-    //two ways onGestureDetection and InkWel
-    //Inkwell we get nice feedbacks and more options
-    //to make it tappable wrap container widget with InkWell
+   
     return InkWell(
       onTap: onSelectCategory,
       borderRadius: BorderRadius.circular(16),//on tap border radius change
