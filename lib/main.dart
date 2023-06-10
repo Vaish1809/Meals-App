@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:meals_app/screens/categories.dart';
+//import 'package:meals_app/screens/categories.dart';
 import 'package:meals_app/screens/tabs.dart';
-
+import 'package:riverpod/riverpod.dart';
+//provider is provided by riverpod package
+// it provides a global dynamic value
+//it may also proivde methods to change value
+//all widgets can have consumer which can access the provider 
+//therefore no passing values
 
 
 final theme = ThemeData(
@@ -17,7 +23,7 @@ final theme = ThemeData(
 );
 
 void main() {
-  runApp(const App());
+  runApp(const ProviderScope(child: App()) );
 }
 
 class App extends StatelessWidget {

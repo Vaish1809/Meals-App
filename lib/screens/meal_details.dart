@@ -1,21 +1,33 @@
 import 'package:flutter/material.dart';
 //import 'package:meals_app/main.dart';
-import 'package:meals_app/models/meal.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class MealDetailsScreen extends StatelessWidget {
+import 'package:meals_app/models/meal.dart';
+import 'package:meals_app/providers/favourites_provider.dart';
+
+//here we trigger the provider 
+class MealDetailsScreen extends ConsumerWidget {
   const MealDetailsScreen({super.key, 
   required this.meal,
-  required this.onToggleFavourite});
+  //required this.onToggleFavourite
+  });
 
   final Meal meal;
-  final void Function(Meal meal) onToggleFavourite;
+ // final void Function(Meal meal) onToggleFavourite;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context,WidgetRef ref) {
     return Scaffold(
         appBar: AppBar(
           actions: [
+            //the method is called here beciase we want the value of meals if it was added or not and based on tht we need to hsow snackbars
             IconButton(onPressed: (){
-onToggleFavourite(meal);
+         final wasAdded = ref.read(favouriteMealsProvider.notifier)
+          .toggleMealFavouriteStatus(meal);
+          ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(wasAdded ? "Meal Added as favourite" : 'Meal Removed as Favourite'),
+    ));
+//onToggleFavourite(meal);
             }, icon:const Icon(Icons.star))
           ],
           title: Text(meal.title),

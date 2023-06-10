@@ -7,8 +7,10 @@ import 'package:meals_app/widgets/category_grid_item.dart';
 import 'package:meals_app/models/category.dart';
 
 class CategoriesScreen extends StatelessWidget {
-  const CategoriesScreen({super.key, required this.onToggleFavourite,required this.availableMeals});
-  final void Function(Meal meal) onToggleFavourite;
+  const CategoriesScreen({super.key,
+  // required this.onToggleFavourite,
+   required this.availableMeals});
+  //final void Function(Meal meal) onToggleFavourite;
   final List<Meal> availableMeals;
 //we generally created a function like this in stateful widget where the ui changes
 //but here we dont change the ui but we add a scren or navigate to another screen
@@ -24,7 +26,8 @@ class CategoriesScreen extends StatelessWidget {
       builder: (ctx) => MealsScreen(
           meals: filteredMeals,
           title: category.title,
-          onToggleFavourite: onToggleFavourite),
+        //  onToggleFavourite: onToggleFavourite
+          ),
     ));
   }
 
